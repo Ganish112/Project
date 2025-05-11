@@ -7,10 +7,12 @@ import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ScrollRestoration from './components/UI/ScrollRestoration';
 
 function App() {
   return (
     <Router>
+      <ScrollRestoration />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
