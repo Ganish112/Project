@@ -96,7 +96,10 @@ const PortfolioPage = () => {
   const handleCategoryChange = (categoryId) => {
     setActiveCategory(categoryId);
   };
-
+const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
   const openProject = (project) => {
     setSelectedProject(project);
     document.body.style.overflow = 'hidden';
