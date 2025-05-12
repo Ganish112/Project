@@ -100,7 +100,7 @@ const PortfolioPage = () => {
 
   useEffect(() => {
     const filtered = activeCategory === 'all'
-      ? portfolioProjects
+      ? [...portfolioProjects]
       : portfolioProjects.filter(project => project.category === activeCategory);
     setDisplayedProjects(filtered);
   }, [activeCategory]);
