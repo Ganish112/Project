@@ -92,18 +92,13 @@ const categories = [
 const PortfolioPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
-  const [displayedProjects, setDisplayedProjects] = useState(portfolioProjects);
+ const displayedProjects = activeCategory === 'all' ? portfolioProjects : portfolioProjects.filter(project => project.category === activeCategory);
 
   useEffect(() => {
     document.title = 'Portfolio | Obsidium';
   }, []);
 
-  useEffect(() => {
-    const filtered = activeCategory === 'all'
-      ? [...portfolioProjects]
-      : portfolioProjects.filter(project => project.category === activeCategory);
-    setDisplayedProjects(filtered);
-  }, [activeCategory]);
+ 
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
