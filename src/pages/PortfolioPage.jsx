@@ -6,7 +6,7 @@ import SectionTitle from '../components/UI/SectionTitle';
 import Button from '../components/UI/Button';
 
 // Portfolio project data
-const portfolioProjects = [
+const projects = [
   {
     id: 1,
     title: 'E-commerce Platform',
