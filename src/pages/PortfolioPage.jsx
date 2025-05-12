@@ -92,19 +92,23 @@ const categories = [
 const PortfolioPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [displayedProjects, setDisplayedProjects] = useState(portfolioProjects);
 
   useEffect(() => {
     document.title = 'Portfolio | Obsidium';
   }, []);
 
+  useEffect(() => {
+    const filtered = activeCategory === 'all'
+      ? portfolioProjects
+      : portfolioProjects.filter(project => project.category === activeCategory);
+    setDisplayedProjects(filtered);
+  }, [activeCategory]);
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
-
-  const filteredProjects = activeCategory === 'all'
-    ? portfolioProjects
-    : portfolioProjects.filter(project => project.category === activeCategory);
 
   const openProject = (id) => {
     setSelectedProject(id);
@@ -185,7 +189,7 @@ const PortfolioPage = () => {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {displayedProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={fadeIn}
