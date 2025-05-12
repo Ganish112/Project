@@ -89,24 +89,16 @@ const categories = [
   { id: 'web-app', name: 'Web Applications' }
 ];
 
-const PortfolioPage = () => {
+function App() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
- const displayedProjects = activeCategory === 'all' ? portfolioProjects : portfolioProjects.filter(project => project.category === activeCategory);
 
-  useEffect(() => {
-    document.title = 'Portfolio | Obsidium';
-  }, []);
-
- 
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+  const handleCategoryChange = (categoryId) => {
+    setActiveCategory(categoryId);
   };
 
-  const openProject = (id) => {
-    setSelectedProject(id);
+  const openProject = (project) => {
+    setSelectedProject(project);
     document.body.style.overflow = 'hidden';
   };
 
@@ -115,9 +107,10 @@ const PortfolioPage = () => {
     document.body.style.overflow = 'auto';
   };
 
-  const project = selectedProject
-    ? portfolioProjects.find(p => p.id === selectedProject)
-    : null;
+  const filteredProjects = activeCategory === 'all'
+    ? projects
+    : projects.filter(project => project.category === activeCategory);
+ 
 
   return (
     <>
