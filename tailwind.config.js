@@ -25,6 +25,15 @@ export default {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'hero-pattern': 'linear-gradient(to right bottom, rgba(12, 74, 110, 0.9), rgba(2, 132, 199, 0.9))',
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '50%': { transform: 'translate(20px, 20px)' },
+        }
+      },
+      animation: {
+        'float': 'float 10s ease-in-out infinite',
+      }
     },
   },
   plugins: [],

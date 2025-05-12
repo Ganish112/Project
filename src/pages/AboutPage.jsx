@@ -100,7 +100,7 @@ const AboutPage = () => {
                 to="/portfolio" 
                 variant="outline"
                 size="lg"
-                className="border-obsidium-300 text-obsidium-300 hover:bg-obsidium-300/10"
+                className="border-white text-white hover:bg-white/10"
               >
                 View Our Work
               </Button>
@@ -332,7 +332,7 @@ const AboutPage = () => {
             to="/contact" 
             variant="outline" 
             size="lg"
-            className="border-white text-white hover:bg-obsidium-500 hover:border-obsidium-500 transition-all duration-300"
+            className="border-white text-white hover:bg-white/10"
           >
             Let's Work Together
           </Button>

@@ -3,6 +3,7 @@ import HeroSection from '../components/Home/HeroSection';
 import ServicesSection from '../components/Home/ServicesSection';
 import WhyChooseUsSection from '../components/Home/WhyChooseUsSection';
 import ClientsSection from '../components/Home/ClientsSection';
+import FaqSection from '../components/Home/FaqSection';
 import CtaSection from '../components/Home/CtaSection';
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
       <ServicesSection />
       <WhyChooseUsSection />
       <ClientsSection />
+      <FaqSection />
       <CtaSection />
     </>
   );

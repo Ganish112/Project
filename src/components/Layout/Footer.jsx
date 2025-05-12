@@ -9,9 +9,12 @@ import {
   Github,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  Send,
+  ArrowRight
 } from 'lucide-react';
 import Logo from '../UI/Logo';
+import Button from '../UI/Button';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,41 +39,55 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6 relative overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 opacity-50"></div>
-      
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
-        >
+    <footer className="relative bg-gradient-to-br from-obsidium-900 via-obsidium-800 to-obsidium-600 text-white">
+      {/* Newsletter Section */}
+      <div className="border-b border-obsidium-700/50">
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Stay Updated with Our Newsletter</h3>
+            <p className="text-obsidium-100 mb-8">Get the latest news, updates, and tips delivered directly to your inbox.</p>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-3 rounded-lg bg-white/10 border border-obsidium-500/30 text-white placeholder-obsidium-300 focus:outline-none focus:border-obsidium-500"
+              />
+              <Button
+                type="submit"
+                variant="primary"
+                className="bg-obsidium-500 hover:bg-obsidium-600"
+                icon={<Send size={18} />}
+              >
+                Subscribe
+              </Button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
-          <motion.div variants={itemVariants}>
-            <div className="mb-4">
-              <Logo color="white" />
-            </div>
-            <p className="text-gray-400 mb-4">
-              We build beautiful, functional websites and web applications that help businesses grow.
+          <div>
+            <Logo color="white" />
+            <p className="text-obsidium-100 my-6">
+              We build beautiful, functional websites and web applications that help businesses grow and succeed in the digital world.
             </p>
-            <div className="flex space-x-3">
+            <div className="flex space-x-4">
               {[
-                { icon: <Facebook size={18} />, href: "https://facebook.com", label: "Facebook" },
-                { icon: <Twitter size={18} />, href: "https://twitter.com", label: "Twitter" },
-                { icon: <Instagram size={18} />, href: "https://instagram.com", label: "Instagram" },
-                { icon: <Linkedin size={18} />, href: "https://linkedin.com", label: "LinkedIn" },
-                { icon: <Github size={18} />, href: "https://github.com", label: "GitHub" }
+                { icon: <Facebook size={20} />, href: "https://facebook.com", label: "Facebook" },
+                { icon: <Twitter size={20} />, href: "https://twitter.com", label: "Twitter" },
+                { icon: <Instagram size={20} />, href: "https://instagram.com", label: "Instagram" },
+                { icon: <Linkedin size={20} />, href: "https://linkedin.com", label: "LinkedIn" },
+                { icon: <Github size={20} />, href: "https://github.com", label: "GitHub" }
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-blue-400 transition-colors p-2 bg-gray-800 rounded-full"
+                  className="bg-obsidium-800 hover:bg-obsidium-700 p-3 rounded-full transition-colors"
                   whileHover="hover"
                   variants={socialHoverVariants}
                   aria-label={social.label}
@@ -79,15 +96,15 @@ const Footer = () => {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
-          
+          </div>
+
           {/* Quick Links */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 relative">
+          <div>
+            <h4 className="text-lg font-semibold mb-6 flex items-center">
               Quick Links
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-500"></span>
-            </h3>
-            <ul className="space-y-2">
+              <ArrowRight size={16} className="ml-2" />
+            </h4>
+            <ul className="space-y-3">
               {[
                 { to: "/", text: "Home" },
                 { to: "/about", text: "About Us" },
@@ -102,22 +119,23 @@ const Footer = () => {
                 >
                   <Link 
                     to={link.to} 
-                    className="text-gray-400 hover:text-blue-400 transition-colors inline-block"
+                    className="text-obsidium-100 hover:text-white transition-colors inline-flex items-center"
                   >
+                    <span className="mr-2">→</span>
                     {link.text}
                   </Link>
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
-          
+          </div>
+
           {/* Services */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 relative">
-              Services
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-500"></span>
-            </h3>
-            <ul className="space-y-2">
+          <div>
+            <h4 className="text-lg font-semibold mb-6 flex items-center">
+              Our Services
+              <ArrowRight size={16} className="ml-2" />
+            </h4>
+            <ul className="space-y-3">
               {[
                 "Website Development",
                 "Responsive Design",
@@ -132,65 +150,68 @@ const Footer = () => {
                 >
                   <Link 
                     to="/services" 
-                    className="text-gray-400 hover:text-blue-400 transition-colors inline-block"
+                    className="text-obsidium-100 hover:text-white transition-colors inline-flex items-center"
                   >
+                    <span className="mr-2">→</span>
                     {service}
                   </Link>
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
-          
-          {/* Contact */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 relative">
-              Contact Us
-              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-500"></span>
-            </h3>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6 flex items-center">
+              Get in Touch
+              <ArrowRight size={16} className="ml-2" />
+            </h4>
             <ul className="space-y-4">
               <motion.li 
-                className="flex items-start space-x-3"
+                className="flex items-start"
                 whileHover={{ x: 5 }}
               >
-                <MapPin size={18} className="text-blue-400 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">
+                <MapPin size={20} className="text-obsidium-300 mt-1 mr-3 flex-shrink-0" />
+                <span className="text-obsidium-100">
                   123 Web Dev Street<br />
                   San Francisco, CA 94103
                 </span>
               </motion.li>
               <motion.li 
-                className="flex items-center space-x-3"
+                className="flex items-center"
                 whileHover={{ x: 5 }}
               >
-                <Phone size={18} className="text-blue-400 flex-shrink-0" />
-                <a href="tel:+14155550123" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Phone size={20} className="text-obsidium-300 mr-3 flex-shrink-0" />
+                <a href="tel:+14155550123" className="text-obsidium-100 hover:text-white transition-colors">
                   (415) 555-0123
                 </a>
               </motion.li>
               <motion.li 
-                className="flex items-center space-x-3"
+                className="flex items-center"
                 whileHover={{ x: 5 }}
               >
-                <Mail size={18} className="text-blue-400 flex-shrink-0" />
-                <a href="mailto:info@webdevcompany.com" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Mail size={20} className="text-obsidium-300 mr-3 flex-shrink-0" />
+                <a href="mailto:info@webdevcompany.com" className="text-obsidium-100 hover:text-white transition-colors">
                   info@webdevcompany.com
                 </a>
               </motion.li>
             </ul>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.hr 
-          variants={itemVariants}
-          className="border-gray-800 mb-6"
-        />
-
-        <motion.div 
-          variants={itemVariants}
-          className="text-center text-sm text-gray-500"
-        >
-          &copy; {currentYear} Web Development Company. All rights reserved.
-        </motion.div>
+        {/* Bottom Bar */}
+        <div className="border-t border-obsidium-700/50 pt-8 mt-12">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-obsidium-200 text-sm mb-4 md:mb-0">
+              &copy; {currentYear} Obsidium. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm text-obsidium-200">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

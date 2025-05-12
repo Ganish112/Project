@@ -13,31 +13,7 @@ const CtaSection = () => {
         transition={{ duration: 0.8 }}
         className="max-w-3xl mx-auto text-center relative"
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute bg-white/5 rounded-full"
-              style={{
-                width: Math.random() * 200 + 100,
-                height: Math.random() * 200 + 100,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                x: [0, Math.random() * 50 - 25],
-                y: [0, Math.random() * 50 - 25],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: Math.random() * 3 + 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-          ))}
-        </div>
+       
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

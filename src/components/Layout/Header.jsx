@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun, MonitorSmartphone } from 'lucide-react';
+import { Menu, X} from 'lucide-react';
 import Logo from '../UI/Logo';
+import { GoSun, GoMoon } from "react-icons/go";
 
 const Header = ({ isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('system');
+  const [theme, setTheme] = useState('light');
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -17,25 +18,25 @@ const Header = ({ isScrolled }) => {
   }, [location]);
 
   useEffect(() => {
-    const isDark = theme === 'dark' ||
-      (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
-    if (isDark) {
+    if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
   }, [theme]);
 
-  const handleThemeChange = (newTheme) => {
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   };
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
+    if (savedTheme === 'dark' || savedTheme === 'light') {
       setTheme(savedTheme);
+    } else {
+      setTheme('light'); // default
     }
   }, []);
 
@@ -54,6 +55,14 @@ const Header = ({ isScrolled }) => {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0 }
   };
+
+  const navItems = [
+    { path: '/', name: 'Home' },
+    { path: '/about', name: 'About' },
+    { path: '/services', name: 'Services' },
+    { path: '/portfolio', name: 'Portfolio' },
+    { path: '/contact', name: 'Contact' }
+  ];
 
   return (
     <motion.header 
@@ -79,67 +88,53 @@ const Header = ({ isScrolled }) => {
 
           {/* Desktop Navigation */}
           <motion.nav 
-            className="hidden md:flex space-x-8 items-center"
+            className="hidden md:flex items-center space-x-8"
             initial="hidden"
             animate="visible"
             variants={navVariants}
           >
-            {['/', '/about', '/services', '/portfolio', '/contact'].map((path, index) => {
-              const names = ['Home', 'About', 'Services', 'Portfolio', 'Contact'];
-              return (
-                <motion.div key={path} variants={itemVariants}>
+            <div className="flex items-center space-x-8">
+              {navItems.map((item) => (
+                <motion.div key={item.path} variants={itemVariants}>
                   <NavLink 
-                    to={path}
+                    to={item.path}
                     className={({ isActive }) =>
-                      `relative px-2 py-1 transition-colors font-medium hover:text-obsidium-500 dark:hover:text-obsidium-400 ${
+                      `relative inline-block px-2 py-1 transition-colors font-medium hover:text-obsidium-500 dark:hover:text-obsidium-400 ${
                         isActive ? 'text-obsidium-500 dark:text-obsidium-400' : 'text-gray-800 dark:text-gray-200'
                       }`
                     }
                   >
                     {({ isActive }) => (
                       <>
-                        {names[index]}
-                        {isActive && (
-                          <motion.div
-                            layoutId="underline"
-                            className="absolute left-0 right-0 h-0.5 bg-obsidium-500 dark:bg-obsidium-400 bottom-0"
-                          />
-                        )}
+                        {item.name}
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-0.5 bg-obsidium-500 dark:bg-obsidium-400"
+                          initial={false}
+                          animate={{
+                            width: isActive ? "100%" : "0%",
+                            opacity: isActive ? 1 : 0
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 30
+                          }}
+                        />
                       </>
                     )}
                   </NavLink>
                 </motion.div>
-              );
-            })}
+              ))}
+            </div>
             
-            <motion.div variants={itemVariants} className="flex items-center space-x-2 ml-4">
-              <motion.button 
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => handleThemeChange('light')}
-                className={`p-1.5 rounded-full ${theme === 'light' ? 'bg-obsidium-100 dark:bg-obsidium-800' : ''}`}
-                aria-label="Light mode"
+            <motion.div variants={itemVariants}>
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white hover:opacity-80 transition"
+                aria-label="Toggle Theme"
               >
-                <Sun size={18} className="text-yellow-500" />
-              </motion.button>
-              <motion.button 
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => handleThemeChange('dark')}
-                className={`p-1.5 rounded-full ${theme === 'dark' ? 'bg-obsidium-100 dark:bg-obsidium-800' : ''}`}
-                aria-label="Dark mode"
-              >
-                <Moon size={18} className="text-indigo-500" />
-              </motion.button>
-              <motion.button 
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => handleThemeChange('system')}
-                className={`p-1.5 rounded-full ${theme === 'system' ? 'bg-obsidium-100 dark:bg-obsidium-800' : ''}`}
-                aria-label="System preference"
-              >
-                <MonitorSmartphone size={18} className="text-gray-500 dark:text-gray-400" />
-              </motion.button>
+                {theme === 'light' ? <GoSun size={20} /> : <GoMoon size={20} />}
+              </button>
             </motion.div>
           </motion.nav>
 
@@ -174,52 +169,30 @@ const Header = ({ isScrolled }) => {
               initial="hidden"
               animate="visible"
             >
-              {['/', '/about', '/services', '/portfolio', '/contact'].map((path, index) => {
-                const names = ['Home', 'About', 'Services', 'Portfolio', 'Contact'];
-                return (
-                  <motion.div key={path} variants={itemVariants}>
-                    <NavLink 
-                      to={path}
-                      className={({ isActive }) =>
-                        `block py-2 transition-colors font-medium hover:text-obsidium-500 dark:hover:text-obsidium-400 ${
-                          isActive ? 'text-obsidium-500 dark:text-obsidium-400' : 'text-gray-800 dark:text-gray-200'
-                        }`
-                      }
-                    >
-                      {names[index]}
-                    </NavLink>
-                  </motion.div>
-                );
-              })}
+              {navItems.map((item) => (
+                <motion.div key={item.path} variants={itemVariants}>
+                  <NavLink 
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `block py-2 transition-colors font-medium hover:text-obsidium-500 dark:hover:text-obsidium-400 ${
+                        isActive ? 'text-obsidium-500 dark:text-obsidium-400' : 'text-gray-800 dark:text-gray-200'
+                      }`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                </motion.div>
+              ))}
 
               <motion.div variants={itemVariants} className="flex items-center space-x-4 py-2">
-                <motion.button 
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => handleThemeChange('light')}
-                  className={`p-2 rounded-full ${theme === 'light' ? 'bg-obsidium-100 dark:bg-obsidium-800' : ''}`}
-                  aria-label="Light mode"
+                <button
+                  onClick={toggleTheme}
+                  className="w-full p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 flex items-center justify-center space-x-2"
+                  aria-label="Toggle Theme"
                 >
-                  <Sun size={20} className="text-yellow-500" />
-                </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => handleThemeChange('dark')}
-                  className={`p-2 rounded-full ${theme === 'dark' ? 'bg-obsidium-100 dark:bg-obsidium-800' : ''}`}
-                  aria-label="Dark mode"
-                >
-                  <Moon size={20} className="text-indigo-500" />
-                </motion.button>
-                <motion.button 
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => handleThemeChange('system')}
-                  className={`p-2 rounded-full ${theme === 'system' ? 'bg-obsidium-100 dark:bg-obsidium-800' : ''}`}
-                  aria-label="System preference"
-                >
-                  <MonitorSmartphone size={20} className="text-gray-500 dark:text-gray-400" />
-                </motion.button>
+                  {theme === 'light' ? <GoSun size={20} /> : <GoMoon size={20} />}
+                  <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
               </motion.div>
             </motion.div>
           </motion.div>

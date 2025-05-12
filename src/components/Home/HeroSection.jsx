@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '../UI/Button';
@@ -57,32 +57,36 @@ const HeroSection = () => {
     { text: "Success", className: "text-obsidium-300" }
   ];
 
+  // Generate random positions once when the component mounts
+  const backgroundElements = useMemo(() => {
+    return [...Array(5)].map(() => ({
+      width: Math.random() * 300 + 100,
+      height: Math.random() * 300 + 100,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      animationDelay: `${Math.random() * 5}s`,
+      animationDuration: `${Math.random() * 5 + 5}s`
+    }));
+  }, []);
+
   return (
     <div 
       ref={heroRef}
       className="relative min-h-screen bg-gradient-to-br from-obsidium-900 via-obsidium-800 to-obsidium-600 flex items-center overflow-hidden"
     >
-      {/* Animated background elements */}
+      {/* Static background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
+        {backgroundElements.map((element, i) => (
+          <div
             key={i}
-            className="absolute bg-obsidium-500/10 rounded-full"
+            className="absolute bg-obsidium-500/10 rounded-full animate-float"
             style={{
-              width: Math.random() * 300 + 100,
-              height: Math.random() * 300 + 100,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              repeatType: "reverse",
+              width: element.width,
+              height: element.height,
+              left: element.left,
+              top: element.top,
+              animationDelay: element.animationDelay,
+              animationDuration: element.animationDuration
             }}
           />
         ))}
@@ -148,7 +152,7 @@ const HeroSection = () => {
                 to="/contact" 
                 variant="outline" 
                 size="lg"
-                className="border-obsidium-300 text-obsidium-300 hover:bg-obsidium-300/10 backdrop-blur-sm w-full sm:w-auto"
+                className="border-white text-white hover:bg-white/10 backdrop-blur-sm w-full sm:w-auto"
               >
                 Let's work together
               </Button>
