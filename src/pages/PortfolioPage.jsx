@@ -89,7 +89,7 @@ const categories = [
   { id: 'web-app', name: 'Web Applications' }
 ];
 
-function App() {
+const PortfolioPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
 
