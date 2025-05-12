@@ -102,12 +102,7 @@ const HeroSection = () => {
             animate="visible"
             variants={textContainer}
           >
-            <motion.h5 
-              variants={fadeIn}
-              className="text-obsidium-200 font-semibold mb-6 tracking-wide uppercase text-base sm:text-lg"
-            >
-              Web Development Excellence
-            </motion.h5>
+          
             
             <motion.div 
               className="mb-8"
