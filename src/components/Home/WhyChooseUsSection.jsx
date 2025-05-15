@@ -61,7 +61,7 @@ const WhyChooseUsSection = () => {
   };
 
   return (
-    <Section background="light">
+    <Section background="dark light">
       <motion.div
         initial="hidden"
         whileInView="visible"
