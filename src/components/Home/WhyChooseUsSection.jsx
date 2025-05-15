@@ -67,7 +67,7 @@ const WhyChooseUsSection = () => {
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
-        className=""
+        className="grid md:grid-cols-2 gap-12 md:gap-16 items-center"
       >
         {/* Text Column */}
         <motion.div variants={itemVariants}>
