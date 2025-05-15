@@ -5,7 +5,9 @@ import WhyChooseUsSection from '../components/Home/WhyChooseUsSection';
 import ClientsSection from '../components/Home/ClientsSection';
 import FaqSection from '../components/Home/FaqSection';
 import CtaSection from '../components/Home/CtaSection';
-import Responsive from '../components/Home/Responsive'
+import Responsive from '../components/Home/Responsive';
+import MockupSection from '../components/Home/MockupSection';
+
 const HomePage = () => {
   useEffect(() => {
     document.title = 'Obsidium | Web Development Company';
@@ -17,11 +19,11 @@ const HomePage = () => {
       <ServicesSection />
       <WhyChooseUsSection />
       <Responsive />
+      <MockupSection />
       <FaqSection />
       <CtaSection />
     </>
   );
 };
-//      <ClientsSection />
 
 export default HomePage;
