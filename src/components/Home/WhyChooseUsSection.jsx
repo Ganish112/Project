@@ -61,9 +61,9 @@ const WhyChooseUsSection = () => {
   };
 
   return (
-    <Section background="white">
+    <Section background="dark">
       <motion.div
-        initial=""
+        initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
