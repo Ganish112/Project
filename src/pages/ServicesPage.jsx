@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Globe, 
-  Smartphone, 
   ShoppingCart, 
   Search, 
   Settings, 
   Layers,
-  CheckCircle,
-  ArrowRight
+  Warehouse,
+  Figma,
+  HardDriveUpload,
+  Images,
+  ArrowRight,
+
 } from 'lucide-react';
+import ServiceAccordion from '../components/ServicesAccordion';
 import Section from '../components/UI/Section';
 import SectionTitle from '../components/UI/SectionTitle';
 import Button from '../components/UI/Button';
+import AnimatedLogo from '../components/UI/AnimatedLogo'
+
 
 const services = [
   {
-    id: 'web-development',
+    id: 'website-design',
     icon: <Globe size={48} className="text-obsidium-500" />,
-    title: 'Website Development',
+    title: 'Website Design & Development',
     description: 'Custom website development tailored to your specific needs and goals. We create modern, fast-loading websites that convert visitors into customers.',
     features: [
       'Custom design and development',
@@ -31,24 +37,9 @@ const services = [
     image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   {
-    id: 'responsive-design',
-    icon: <Smartphone size={48} className="text-obsidium-500" />,
-    title: 'Responsive Design',
-    description: 'Mobile-friendly websites that look great and function perfectly across all devices, from smartphones to desktop computers.',
-    features: [
-      'Mobile-first design approach',
-      'Device-specific optimizations',
-      'Consistent user experience across devices',
-      'Touch-friendly navigation',
-      'Optimized images and media',
-      'Performance optimization for mobile'
-    ],
-    image: 'https://images.pexels.com/photos/193003/pexels-photo-193003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-  },
-  {
-    id: 'ecommerce',
+    id: 'ecommerce-solutions',
     icon: <ShoppingCart size={48} className="text-obsidium-500" />,
-    title: 'E-commerce Solutions',
+    title: 'E-Commerce Solutions',
     description: 'Custom online stores with secure payment processing, inventory management, and everything you need to sell products online.',
     features: [
       'Custom e-commerce development',
@@ -61,9 +52,9 @@ const services = [
     image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   {
-    id: 'seo',
+    id: 'seo-optimization',
     icon: <Search size={48} className="text-obsidium-500" />,
-    title: 'SEO Optimization',
+    title: 'SEO & Performance Optimization',
     description: 'Improve your search engine rankings with on-page SEO optimization that helps customers find your business online.',
     features: [
       'Keyword research and strategy',
@@ -76,9 +67,9 @@ const services = [
     image: 'https://images.pexels.com/photos/306316/pexels-photo-306316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   {
-    id: 'maintenance',
+    id: 'website-maintenance',
     icon: <Settings size={48} className="text-obsidium-500" />,
-    title: 'Website Maintenance',
+    title: 'Website Maintenance & Support',
     description: 'Keep your website secure, up-to-date, and running smoothly with our comprehensive maintenance services.',
     features: [
       'Regular software updates',
@@ -93,7 +84,7 @@ const services = [
   {
     id: 'web-applications',
     icon: <Layers size={48} className="text-obsidium-500" />,
-    title: 'Web Applications',
+    title: 'Web Application Development',
     description: 'Custom web applications that streamline your business processes and improve productivity.',
     features: [
       'Custom web application development',
@@ -104,13 +95,86 @@ const services = [
       'Scalable architecture'
     ],
     image: 'https://images.pexels.com/photos/196646/pexels-photo-196646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-  }
+  },
+  {
+    id: 'web-hosting',
+    icon: <Warehouse size={48} className="text-obsidium-500" />,
+    title: 'Web Hosting & Domain Services',
+    description: 'Reliable hosting solutions with fast load times, high uptime, and excellent security features.',
+    features: [
+      'Fast and reliable web hosting',
+      'Domain registration and management',
+      'SSL certificate installation',
+      'Server configuration and optimization',
+      'Regular backups and monitoring',
+      'Email hosting and setup'
+    ],
+    image: 'https://images.pexels.com/photos/1772123/pexels-photo-1772123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+  {
+    id: 'ui-ux-design',
+    icon: <Figma size={48} className="text-obsidium-500" />,
+    title: 'UI/UX Designing',
+    description: 'User-centered design that focuses on creating intuitive, engaging, and effective user experiences.',
+    features: [
+      'User research and persona development',
+      'Wireframing and prototyping',
+      'User interface design',
+      'Usability testing',
+      'Interaction design',
+      'Design system creation'
+    ],
+    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+  {
+    id: 'api-integrations',
+    icon: <HardDriveUpload size={48} className="text-obsidium-500" />,
+    title: 'API & Third Party Integrations',
+    description: 'Seamless integration of third-party services and APIs to extend your website or application functionality.',
+    features: [
+      'Payment gateway integration',
+      'CRM and marketing automation integration',
+      'Social media API integration',
+      'E-commerce platform integration',
+      'Custom API development',
+      'Analytics and tracking implementation'
+    ],
+    image: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+  {
+    id: 'branding-design',
+    icon: <Images size={48} className="text-obsidium-500" />,
+    title: 'Branding & Logo Design',
+    description: 'Strategic branding and logo design that communicates your company values and resonates with your target audience.',
+    features: [
+      'Logo design and brand identity',
+      'Brand strategy development',
+      'Visual style guide creation',
+      'Marketing collateral design',
+      'Brand messaging and positioning',
+      'Social media branding'
+    ],
+    image: 'https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
 ];
 
-const ServicesPage = () => {
+function ServicesPage() {
+
   useEffect(() => {
     document.title = 'Services | Obsidium';
   }, []);
+
+  const [openAccordion, setOpenAccordion] = useState(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -118,9 +182,10 @@ const ServicesPage = () => {
   };
 
   return (
-    <>
-      {/* Hero Section */}
-      <Section background="dark" spacing="xl">
+
+  <>
+   {/* Hero Section */}
+   <Section background="dark" spacing="xl">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -165,132 +230,72 @@ const ServicesPage = () => {
               </Button>
             </div>
           </motion.div>
-          <motion.div variants={fadeIn} className="relative">
-            <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
-            <img
-              src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Web development services"
-              className="rounded-lg shadow-lg object-cover w-full relative z-10"
-            />
-          </motion.div>
+          <motion.div 
+      className="w-full lg:w-1/2 flex justify-center relative"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+    >
+      <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
+      <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
+        <AnimatedLogo className="w-full h-full" />
+        <div className="text-white text-base sm:text-lg md:text-2xl font-mono whitespace-nowrap overflow-hidden border-r-2 border-white w-[27ch] animate-typing">
+          <span className="text-lg sm:text-xl md:text-3xl">Obsidium.</span> Web Development.
+        </div>
+      </div>
+    </motion.div>
         </motion.div>
       </Section>
+      
+      
+      <Section background="light" className="min-h-screen relative overflow-hidden">
+  <div className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.1,
+          },
+        },
+      }}
+      className="mb-12 text-center"
+    >
+      <SectionTitle
+        title="Our Services"
+        subtitle="We offer a full range of web development services to make your online presence stand out."
+      />
+    </motion.div>
 
-      {/* Services Overview */}
-      <Section background="light">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.2
-              }
-            }
-          }}
-        >
-          <SectionTitle
-            title="Our Services"
-            subtitle="Discover how we can help bring your digital vision to life"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.a
-                key={service.id}
-                href={`#${service.id}`}
-                variants={fadeIn}
-                className="group bg-white dark:bg-gray-900 rounded-lg shadow-md p-8 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-obsidium-500/0 via-obsidium-500/0 to-obsidium-500/0 group-hover:from-obsidium-500/5 group-hover:via-obsidium-500/10 group-hover:to-obsidium-500/5 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="mb-6 text-obsidium-500 transition-transform duration-300 group-hover:scale-110">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{service.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
-                  <span className="text-obsidium-500 font-medium inline-flex items-center group-hover:translate-x-2 transition-transform">
-                    Learn more
-                    <ArrowRight size={16} className="ml-2" />
-                  </span>
-                </div>
-              </motion.a>
-            ))}
-          </div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.2,
+          },
+        },
+      }}
+      className="space-y-4"
+    >
+      {services.map((service) => (
+        <motion.div key={service.id} variants={fadeIn}>
+          <ServiceAccordion {...service} />
         </motion.div>
-      </Section>
-
-      {/* Individual Services */}
-      {services.map((service, index) => (
-        <Section key={service.id} id={service.id} background={index % 2 === 0 ? 'white' : 'light'}>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.2
-                }
-              }
-            }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <motion.div variants={fadeIn} className={index % 2 !== 0 ? 'order-2 md:order-1' : ''}>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/20 to-transparent blur-2xl"></div>
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white relative">
-                  {service.title}
-                </h2>
-              </div>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-4 mb-8">
-                {service.features.map((feature, i) => (
-                  <motion.li
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0 }
-                    }}
-                    className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                  >
-                    <CheckCircle size={20} className="text-obsidium-500 mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-              <Button 
-                to="/contact" 
-                variant="primary"
-                className="bg-obsidium-500 hover:bg-obsidium-600"
-              >
-                Request This Service
-              </Button>
-            </motion.div>
-            <motion.div
-              variants={fadeIn}
-              className={`relative ${index % 2 !== 0 ? 'order-1 md:order-2' : ''}`}
-            >
-              <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
-              <img
-                src={service.image}
-                alt={service.title}
-                className="rounded-lg shadow-lg w-full object-cover relative z-10 transform hover:scale-105 transition-transform duration-500"
-                style={{ height: '400px' }}
-              />
-            </motion.div>
-          </motion.div>
-        </Section>
       ))}
+    </motion.div>
+  </div>
+</Section>
 
-      {/* CTA Section */}
+
+
+    {/* CTA Section */}
       <Section background="gradient">
         <motion.div
           initial="hidden"
@@ -317,6 +322,6 @@ const ServicesPage = () => {
       </Section>
     </>
   );
-};
+}
 
 export default ServicesPage;

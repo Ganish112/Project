@@ -29,12 +29,23 @@ export default {
         float: {
           '0%, 100%': { transform: 'translate(0, 0)' },
           '50%': { transform: 'translate(20px, 20px)' },
-        }
+        },
+        typing: {
+          from: { width: '0' },
+          to: { width: '27ch' }, // match the exact character count
+        },
+        blink: {
+          '50%': { borderColor: 'transparent' },
+        },
       },
       animation: {
-        'float': 'float 10s ease-in-out infinite',
-      }
+        float: 'float 10s ease-in-out infinite',
+        typing: 'typing 3s steps(30, end) forwards, blink 0.75s step-end infinite',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+
+  ],
 };

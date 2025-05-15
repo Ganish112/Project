@@ -10,16 +10,16 @@ const faqs = [
     answer: "We offer a comprehensive range of web development services including custom website development, e-commerce solutions, responsive design, web applications, SEO optimization, and website maintenance."
   },
   {
-    question: "How long does it take to complete a website?",
-    answer: "Project timelines vary depending on complexity and requirements. A simple website typically takes 4-6 weeks, while more complex projects may take 8-12 weeks or more. We'll provide a detailed timeline during our initial consultation."
+    question: "How can Obsidium help my business",
+    answer: "We create and design professional websitesto help you stand out online and achieve measurable results. Share your vision with us and we will transform it into a digital reality."
   },
   {
     question: "Do you provide ongoing support after launch?",
     answer: "Yes, we offer various maintenance packages to ensure your website remains secure, up-to-date, and performing optimally. This includes regular updates, security monitoring, backups, and technical support."
   },
   {
-    question: "How much does a website cost?",
-    answer: "Website costs vary based on your specific needs and requirements. We provide custom quotes after understanding your project scope. Contact us for a free consultation and detailed pricing."
+    question: "Is the payment process simple?",
+    answer: "Yes, it is! We offer a straightforward billing system. A 50% deposit is required to start the project, with the remaining 50% balance due upon completion."
   },
   {
     question: "Do you help with website hosting?",

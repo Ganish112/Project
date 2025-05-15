@@ -27,11 +27,7 @@ const features = [
     title: 'On-Time Delivery',
     description: 'We value your time and always deliver projects on schedule without compromising on quality.'
   },
-  {
-    icon: <CodeIcon size={28} className="text-obsidium-500" />,
-    title: 'Clean Code',
-    description: 'We write clean, maintainable code that follows best practices and ensures your website runs smoothly.'
-  },
+ 
   {
     icon: <Shield size={28} className="text-obsidium-500" />,
     title: 'Security Focus',
@@ -61,7 +57,7 @@ const WhyChooseUsSection = () => {
   };
 
   return (
-    <Section background="dark">
+    <Section background="white">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -84,7 +80,7 @@ const WhyChooseUsSection = () => {
           </p>
 
           <div className="space-y-6">
-            {features.slice(0, 3).map((feature, index) => (
+            {features.slice(0, 6).map((feature, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -122,23 +118,7 @@ const WhyChooseUsSection = () => {
             </div>
           </Tilt>
 
-          <div className="space-y-6 mt-10">
-            {features.slice(3).map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="flex items-start group"
-              >
-                <div className="p-2 bg-obsidium-100 dark:bg-obsidium-900/30 rounded-xl mr-4 mt-1 group-hover:bg-obsidium-200 dark:group-hover:bg-obsidium-800/50 transition-colors">
-                  {feature.icon}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{feature.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          
         </motion.div>
       </motion.div>
     </Section>

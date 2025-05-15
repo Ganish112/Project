@@ -41,29 +41,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-gradient-to-br from-obsidium-900 via-obsidium-800 to-obsidium-600 text-white">
       {/* Newsletter Section */}
-      <div className="border-b border-obsidium-700/50">
-        <div className="container mx-auto px-4 py-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Stay Updated with Our Newsletter</h3>
-            <p className="text-obsidium-100 mb-8">Get the latest news, updates, and tips delivered directly to your inbox.</p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-lg bg-white/10 border border-obsidium-500/30 text-white placeholder-obsidium-300 focus:outline-none focus:border-obsidium-500"
-              />
-              <Button
-                type="submit"
-                variant="primary"
-                className="bg-obsidium-500 hover:bg-obsidium-600"
-                icon={<Send size={18} />}
-              >
-                Subscribe
-              </Button>
-            </form>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 pt-16 pb-8">
@@ -77,10 +55,9 @@ const Footer = () => {
             <div className="flex space-x-4">
               {[
                 { icon: <Facebook size={20} />, href: "https://facebook.com", label: "Facebook" },
-                { icon: <Twitter size={20} />, href: "https://twitter.com", label: "Twitter" },
                 { icon: <Instagram size={20} />, href: "https://instagram.com", label: "Instagram" },
                 { icon: <Linkedin size={20} />, href: "https://linkedin.com", label: "LinkedIn" },
-                { icon: <Github size={20} />, href: "https://github.com", label: "GitHub" }
+               
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -109,7 +86,6 @@ const Footer = () => {
                 { to: "/", text: "Home" },
                 { to: "/about", text: "About Us" },
                 { to: "/services", text: "Services" },
-                { to: "/portfolio", text: "Portfolio" },
                 { to: "/contact", text: "Contact" }
               ].map((link, index) => (
                 <motion.li 
@@ -137,11 +113,12 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {[
-                "Website Development",
-                "Responsive Design",
-                "E-commerce Solutions",
-                "SEO Optimization",
-                "Website Maintenance"
+                "Website Design & Development",
+                "E-Commerce Solutions",
+                "SEO & Performance Optimization",
+                "Website Maintenance & Support",
+                "Web Hosting & Domain Services",
+                "Branding & Graphic Design"
               ].map((service, index) => (
                 <motion.li 
                   key={index}
@@ -173,8 +150,8 @@ const Footer = () => {
               >
                 <MapPin size={20} className="text-obsidium-300 mt-1 mr-3 flex-shrink-0" />
                 <span className="text-obsidium-100">
-                  123 Web Dev Street<br />
-                  San Francisco, CA 94103
+                  
+                Prishtina 10000, Kosovo
                 </span>
               </motion.li>
               <motion.li 
@@ -183,7 +160,9 @@ const Footer = () => {
               >
                 <Phone size={20} className="text-obsidium-300 mr-3 flex-shrink-0" />
                 <a href="tel:+14155550123" className="text-obsidium-100 hover:text-white transition-colors">
-                  (415) 555-0123
+                  (+383) 45 354 743
+                  <br />
+                  (+383) 45 439 223
                 </a>
               </motion.li>
               <motion.li 
