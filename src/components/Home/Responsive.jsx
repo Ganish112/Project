@@ -49,21 +49,26 @@ export default function DeviceShowcase() {
           Responsive Across All Devices
         </h2>
 
-        <div className="w-full overflow-hidden">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
             {devices.map((device, index) => (
               <motion.div
                 key={device.name}
                 custom={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={controls}
-                className="w-[340px] sm:w-[360px] md:w-[280px] lg:w-[300px] aspect-[2/4] flex items-center justify-center"
+                className="flex justify-center"
               >
-                <img
-                  src={device.image}
-                  alt={device.name}
-                  className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
-                />
+                <div className="relative w-full max-w-[280px] aspect-[3/4] p-4">
+                  <img
+                    src={device.image}
+                    alt={device.name}
+                    className="w-full h-full object-contain transform hover:scale-105 transition-transform duration-300"
+                    style={{
+                      filter: "drop-shadow(0 10px 15px rgba(0,0,0,0.1))"
+                    }}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
