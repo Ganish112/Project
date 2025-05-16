@@ -5,7 +5,7 @@ import iPhoneImage from "../../assets/phone.png";
 export default function DeviceShowcase() {
   const devices = [
     { name: "iPhone 12", image: iPhoneImage },
-    { name: "iPhone 13", image: iPhoneImage },
+    { name: "Tablet", image: tablet },
     { name: "iPhone 14", image: iPhoneImage },
     { name: "iPhone 15", image: iPhoneImage },
   ];
