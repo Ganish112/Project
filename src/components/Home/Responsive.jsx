@@ -57,7 +57,7 @@ export default function DeviceShowcase() {
                 custom={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={controls}
-                className="w-[340px] sm:w-[360px] md:w-[280px] lg:w-[400px] aspect-[2/4] flex items-center justify-center"
+                className="w-[340px] sm:w-[360px] md:w-[280px] lg:w-[400px] aspect-[1/4] flex items-center justify-center"
               >
                 <img
                   src={device.image}
