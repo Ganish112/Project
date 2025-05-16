@@ -2,13 +2,15 @@ import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import iPhoneImage from "../../assets/phone.png";
 import tablet from "../../assets/tablet.png";
+import PC from "../../assets/pc.png";
+import Laptop from "../../assets/laptop.png";
 
 export default function DeviceShowcase() {
   const devices = [
     { name: "iPhone 12", image: iPhoneImage },
     { name: "Tablet", image: tablet },
-    { name: "iPhone 14", image: iPhoneImage },
-    { name: "iPhone 15", image: iPhoneImage },
+    { name: "PC", image: PC },
+    { name: "Laptop", image: Laptop },
   ];
 
   const ref = useRef(null);
