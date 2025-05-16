@@ -1,8 +1,8 @@
 import React from "react";
-import iphone from "@/assets/iphone.png";
-import macbook from "@/assets/macbook.png";
-import ipad from "@/assets/ipad.png";
-import imac from "@/assets/imac.png";
+import iphone from "../../assets/iphone.png";
+import macbook from "../../assets/macbook.png";
+import ipad from "../../assets/ipad.png";
+import imac from "../../assets/imac.png";
 
 export default function DeviceShowcase() {
   const devices = [
