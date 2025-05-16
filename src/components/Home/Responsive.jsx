@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import iPhoneImage from "../../assets/phone.png";
+import tablet from "../../assets/tablet.png";
 
 export default function DeviceShowcase() {
   const devices = [
