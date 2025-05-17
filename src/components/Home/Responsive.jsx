@@ -10,10 +10,30 @@ import SectionTitle from '../UI/SectionTitle';
 
 export default function DeviceShowcase() {
   const devices = [
-    { name: "iPhone", image: iPhoneImage, description: "Perfect mobile experience" },
-    { name: "Tablet", image: tablet, description: "Optimized for tablets" },
-    { name: "Laptop", image: Laptop, description: "Seamless laptop viewing" },
-    { name: "Desktop", image: PC, description: "Full desktop experience" }
+    { 
+      name: "Mobile", 
+      image: iPhoneImage, 
+      description: "Perfectly optimized for smartphones",
+      width: "w-24 md:w-32"
+    },
+    { 
+      name: "Tablet", 
+      image: tablet, 
+      description: "Seamless tablet experience",
+      width: "w-32 md:w-40"
+    },
+    { 
+      name: "Laptop", 
+      image: Laptop, 
+      description: "Responsive laptop viewing",
+      width: "w-48 md:w-56"
+    },
+    { 
+      name: "Desktop", 
+      image: PC, 
+      description: "Full desktop experience",
+      width: "w-40 md:w-48"
+    }
   ];
 
   const ref = useRef(null);
@@ -25,8 +45,9 @@ export default function DeviceShowcase() {
       controls.start((index) => ({
         opacity: 1,
         y: 0,
+        scale: 1,
         transition: {
-          duration: 0.8,
+          duration: 0.6,
           delay: index * 0.2,
           ease: "easeOut"
         },
@@ -34,7 +55,8 @@ export default function DeviceShowcase() {
     } else {
       controls.start(() => ({
         opacity: 0,
-        y: 50,
+        y: 30,
+        scale: 0.95,
         transition: { duration: 0.4 },
       }));
     }
@@ -42,55 +64,77 @@ export default function DeviceShowcase() {
 
   return (
     <Section background="light">
-      <div className="container mx-auto px-4" ref={ref}>
+      <div ref={ref} className="container mx-auto px-4 py-16">
         <SectionTitle
-          title="Responsive Across All Devices"
-          subtitle="Experience seamless design and functionality across every device. Our websites adapt perfectly to any screen size."
+          title="Responsive Design Excellence"
+          subtitle="Experience your website at its best across all devices with our responsive design approach"
         />
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {devices.map((device, index) => (
-            <motion.div
-              key={device.name}
-              custom={index}
-              animate={controls}
-              initial={{ opacity: 0, y: 50 }}
-              className="relative group"
-            >
-              <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="relative">
-                  {/* Decorative background circle */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-obsidium-100 to-obsidium-50 dark:from-obsidium-900/30 dark:to-obsidium-800/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                      <img
-                        src={device.image}
-                        alt={`${device.name} Preview`}
-                        className="w-auto h-32 object-contain"
-                      />
+        <div className="relative mt-20">
+          {/* Background decorative elements */}
+          <div className="absolute inset-0 bg-gradient-radial from-obsidium-100/50 to-transparent dark:from-obsidium-900/30 dark:to-transparent blur-3xl -z-10" />
+          
+          <div className="flex flex-col items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6">
+              {devices.map((device, index) => (
+                <motion.div
+                  key={device.name}
+                  custom={index}
+                  animate={controls}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  className="flex flex-col items-center"
+                >
+                  <div className="relative group mb-6">
+                    {/* Device container with hover effects */}
+                    <div className="relative transform transition-all duration-500 hover:scale-110">
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 bg-gradient-radial from-obsidium-400/20 to-transparent dark:from-obsidium-400/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Device image */}
+                      <div className="relative">
+                        <img
+                          src={device.image}
+                          alt={`${device.name} view`}
+                          className={`${device.width} h-auto object-contain filter drop-shadow-xl`}
+                        />
+                      </div>
                     </div>
+
+                    {/* Reflection effect */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-4 bg-gradient-to-b from-obsidium-400/20 to-transparent blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+
+                  {/* Device info */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                    className="text-center"
+                  >
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                       {device.name}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-center">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
                       {device.description}
                     </p>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
 
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-obsidium-500/0 via-obsidium-500/0 to-obsidium-500/0 group-hover:from-obsidium-500/5 group-hover:via-obsidium-500/10 group-hover:to-obsidium-500/5 rounded-2xl transition-all duration-500" />
-              </div>
+            {/* Bottom description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="mt-16 max-w-2xl text-center"
+            >
+              <p className="text-lg text-gray-700 dark:text-gray-300">
+                Our responsive design ensures your website maintains its visual appeal and functionality 
+                across all devices, providing an exceptional user experience for every visitor.
+              </p>
             </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Our responsive design ensures your website looks and functions perfectly on every device, 
-            providing an optimal user experience for all your visitors.
-          </p>
+          </div>
         </div>
       </div>
     </Section>
