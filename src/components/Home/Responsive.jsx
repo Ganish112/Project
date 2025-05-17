@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import iPhoneImage from "../../assets/phone.png";
 import PC from "../../assets/pc.png";
 import Laptop from "../../assets/laptop.png";
@@ -44,19 +46,19 @@ export default function DeviceShowcase() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-center">
           <div className="flex flex-col items-center">
-            <img src={iphone} alt="iPhone Preview" className="w-40 h-auto" />
+            <img src={iPhoneImage} alt="iPhone Preview" className="w-40 h-auto" />
             <span className="mt-4 font-medium text-gray-700">iPhone</span>
           </div>
           <div className="flex flex-col items-center">
-            <img src={macbook} alt="MacBook Preview" className="w-64 h-auto" />
+            <img src={Laptop} alt="MacBook Preview" className="w-64 h-auto" />
             <span className="mt-4 font-medium text-gray-700">MacBook</span>
           </div>
           <div className="flex flex-col items-center">
-            <img src={ipad} alt="iPad Preview" className="w-48 h-auto" />
+            <img src={tablet} alt="iPad Preview" className="w-48 h-auto" />
             <span className="mt-4 font-medium text-gray-700">iPad</span>
           </div>
           <div className="flex flex-col items-center">
-            <img src={imac} alt="iMac Preview" className="w-56 h-auto" />
+            <img src={PC} alt="iMac Preview" className="w-56 h-auto" />
             <span className="mt-4 font-medium text-gray-700">iMac</span>
           </div>
         </div>
