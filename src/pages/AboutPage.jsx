@@ -1,30 +1,31 @@
 import React, { useEffect } from 'react'; 
 import { motion } from 'framer-motion';
-import { Award, Clock, Users, BadgeCheck } from 'lucide-react';
+import { Award, Clock, Users, BadgeCheck,ArrowRight } from 'lucide-react';
 import Section from '../components/UI/Section';
 import SectionTitle from '../components/UI/SectionTitle';
 import Button from '../components/UI/Button';
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import Image from '../assets/MVV.png'
+
 const teamMembers = [
   {
     name: 'Andi Zogaj',
     position: 'Founder & Full Stack Developer',
     photo: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'With over 15 years of experience in web development, John founded Obsidium with a vision to create innovative digital solutions.',
+    bio: 'With over 5 years of experience in web development, Andi is the co-founder of Obsidium, driven by a vision to create innovative digital solutions. Skilled in JavaScript technologies, Andi is passionate about building efficient web applications. solving problems and delivering smooth, user-friendly experiences.',
     social: {
-      linkedin: '#',
-      github: '#'
+      linkedin: 'https://www.linkedin.com/in/andi-zogaj-20a8a2242/',
+      github: 'https://github.com/AndiZogaj22'
     }
   },
   {
     name: 'Dimal Maloku',
     position: 'Founder & Full Stack Developer',
     photo: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'Emily brings creativity and user-centered design principles to every project, ensuring beautiful and functional interfaces.',
+    bio: 'With over 5 years of experience in web development, Andi is the co-founder of Obsidium, driven by a vision to create innovative digital solutions. He is skilled in React, Next.js, JavaScript, and Tailwind CSS, building clean and efficient web applications. Andi is passionate about solving problems and delivering smooth, user-friendly experiences.',
     social: {
-      linkedin: '#',
-      github: '#'
+      linkedin: 'https://www.linkedin.com/in/dimal-maloku-188b9a31b/',
+      github: 'https://github.com/DimalMaloku1'
     }
   },
   
@@ -70,18 +71,12 @@ const AboutPage = () => {
                 to="/contact" 
                 variant="primary"
                 size="lg"
+                icon={<ArrowRight size={20} />}
                 className="bg-obsidium-500 hover:bg-obsidium-600"
               >
                 Get in Touch
               </Button>
-              <Button 
-                to="/portfolio" 
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white/10"
-              >
-                View Our Work
-              </Button>
+              
             </div>
           </motion.div>
 
@@ -91,7 +86,7 @@ const AboutPage = () => {
                 <div className="text-obsidium-500 mb-4 flex justify-center">
                   <Users size={40} />
                 </div>
-                <div className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">40+</div>
+                <div className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">20+</div>
                 <div className="text-gray-600 dark:text-gray-400">Happy Clients</div>
               </div>
               <div className="bg-gradient-to-br from-obsidium-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg text-center transform hover:scale-105 transition-transform duration-300">
@@ -112,7 +107,7 @@ const AboutPage = () => {
                 <div className="text-obsidium-500 mb-4 flex justify-center">
                   <BadgeCheck size={40} />
                 </div>
-                <div className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">40+</div>
+                <div className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">20+</div>
                 <div className="text-gray-600 dark:text-gray-400">Projects Completed</div>
               </div>
             </motion.div>

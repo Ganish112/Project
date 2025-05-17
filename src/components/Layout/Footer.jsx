@@ -159,7 +159,7 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
               >
                 <Phone size={20} className="text-obsidium-300 mr-3 flex-shrink-0" />
-                <a href="tel:+14155550123" className="text-obsidium-100 hover:text-white transition-colors">
+                <a className="text-obsidium-100 hover:text-white transition-colors">
                   (+383) 45 354 743
                   <br />
                   (+383) 45 439 223
@@ -185,9 +185,9 @@ const Footer = () => {
               &copy; {currentYear} Obsidium. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm text-obsidium-200">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+              <a  className="hover:text-white transition-colors">Privacy Policy</a>
+              <a className="hover:text-white transition-colors">Terms of Service</a>
+              <a  className="hover:text-white transition-colors">Cookie Policy</a>
             </div>
           </div>
         </div>

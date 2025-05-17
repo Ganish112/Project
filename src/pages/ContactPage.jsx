@@ -80,7 +80,10 @@ const ContactPage = () => {
     {
       icon: <Phone size={24} className="text-obsidium-500" />,
       title: 'Phone Number',
-      content: '(415) 555-0123',
+      content: [
+        { number: '(+383) 45 354 732'},
+        { number: '(+383) 45 439 223'}
+      ],
       link: 'tel:+14155550123',
       bg: 'bg-obsidium-50 dark:bg-obsidium-900/30'
     },
@@ -100,9 +103,9 @@ const ContactPage = () => {
   ];
 
   const socialLinks = [
-    { icon: <Linkedin size={24} />, href: 'https://linkedin.com', color: 'text-blue-700' },
-    { icon: <Instagram size={24} />, href: 'https://twitter.com', color: 'text-blue-500' },
-    { icon: <Facebook size={24} />, href: 'https://facebook.com', color: 'text-blue-600' }
+    { icon: <Instagram size={24} />, href: 'https://Instagram.com', color: 'text-blue-500' },
+    { icon: <Facebook size={24} />, href: 'https://Facebook.com', color: 'text-blue-600' },
+    { icon: <Linkedin size={24} />, href: 'https://LinkedIn.com', color: 'text-blue-700' },
   ];
 
   const inputClasses = "w-full px-4 py-3 rounded-lg border bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-obsidium-500 transition-all duration-300 border-gray-200 dark:border-gray-700 placeholder-gray-400 dark:placeholder-gray-500";
@@ -156,16 +159,27 @@ const ContactPage = () => {
                       {info.icon}
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{info.title}</h3>
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        className="text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
-                      >
-                        {info.content}
-                      </a>
-                    ) : (
-                      <p className="text-gray-600 dark:text-gray-400">{info.content}</p>
-                    )}
+                    {Array.isArray(info.content) ? (
+  info.content.map((phone, i) => (
+    <a
+      key={i}
+      href={phone.link}
+      className="block text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
+    >
+      {phone.number}
+    </a>
+  ))
+) : info.link ? (
+  <a
+    href={info.link}
+    className="text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
+  >
+    {info.content}
+  </a>
+) : (
+  <p className="text-gray-600 dark:text-gray-400">{info.content}</p>
+)}
+
                   </div>
                 </Tilt>
               </motion.div>
@@ -248,7 +262,7 @@ const ContactPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Phone Number
+                        Phone Numbers
                       </label>
                       <div className="relative">
                         <Phone size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />

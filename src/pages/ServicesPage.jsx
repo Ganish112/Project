@@ -220,31 +220,29 @@ function ServicesPage() {
                   Start Your Project
                 </span>
               </Button>
-              <Button 
-                to="/portfolio" 
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white/10"
-              >
-                View Our Work
-              </Button>
+             
             </div>
           </motion.div>
+          
           <motion.div 
-      className="w-full lg:w-1/2 flex justify-center relative"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
-    >
-      <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
-      <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
-        <AnimatedLogo className="w-full h-full" />
-        <div className="text-white text-base sm:text-lg md:text-2xl font-mono whitespace-nowrap overflow-hidden border-r-2 border-white w-[27ch] animate-typing">
-          <span className="text-lg sm:text-xl md:text-3xl">Obsidium.</span> Web Development.
-        </div>
-      </div>
-    </motion.div>
+  className="w-full lg:w-1/2 flex justify-center relative lg:translate-x-4 lg:ml-28"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+>
+  <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
+  <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
+    <AnimatedLogo className="w-full h-full" />
+    <div className="text-white text-base sm:text-lg md:text-2xl font-mono whitespace-nowrap overflow-hidden border-r-2 border-white w-[27ch] animate-typing">
+      <span className="text-lg sm:text-xl md:text-3xl">Obsidium.</span> Web Development.
+    </div>
+  </div>
+</motion.div>
+
+
+
         </motion.div>
+
       </Section>
       
       

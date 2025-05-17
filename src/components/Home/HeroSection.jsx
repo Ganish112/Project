@@ -133,24 +133,17 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
             >
               <Button 
-                to="/portfolio" 
+                to="/contact" 
                 variant="primary" 
                 size="lg"
                 icon={<ArrowRight size={20} />}
                 className="bg-obsidium-500 hover:bg-obsidium-600 group w-full sm:w-auto"
               >
                 <span className="group-hover:translate-x-1 transition-transform">
-                  View Our Work
+                Let's work together
                 </span>
               </Button>
-              <Button 
-                to="/contact" 
-                variant="outline" 
-                size="lg"
-                className="border-white text-white hover:bg-white/10 backdrop-blur-sm w-full sm:w-auto"
-              >
-                Let's work together
-              </Button>
+             
             </motion.div>
           </motion.div>
           

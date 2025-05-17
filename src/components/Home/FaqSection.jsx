@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "How can Obsidium help my business",
-    answer: "We create and design professional websitesto help you stand out online and achieve measurable results. Share your vision with us and we will transform it into a digital reality."
+    answer: "We create and design professional websitets that help you stand out online and achieve measurable results. Share your vision with us and we will transform it into a digital reality."
   },
   {
     question: "Do you provide ongoing support after launch?",
