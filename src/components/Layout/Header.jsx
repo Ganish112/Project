@@ -76,7 +76,7 @@ const Header = ({ isScrolled }) => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex justify-between items-center">
+        <div className=" justify-between items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
