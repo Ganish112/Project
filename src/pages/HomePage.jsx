@@ -5,14 +5,16 @@ import WhyChooseUsSection from '../components/Home/WhyChooseUsSection';
 import ClientsSection from '../components/Home/ClientsSection';
 import FaqSection from '../components/Home/FaqSection';
 import CtaSection from '../components/Home/CtaSection';
-import Responsive from '../components/Home/Responsive'
+import Responsive from '../components/Home/Responsive';
+import SEO from '../components/UI/SEO';
+
 const HomePage = () => {
-  useEffect(() => {
-    document.title = 'Obsidium | Web Development Company';
-  }, []);
-  
   return (
     <>
+      <SEO 
+        title="Web Development Company"
+        description="Transform your digital presence with expert web development services. Custom websites, e-commerce solutions, and web applications built for success."
+      />
       <HeroSection />
       <ServicesSection />
       <WhyChooseUsSection />
@@ -22,6 +24,5 @@ const HomePage = () => {
     </>
   );
 };
-//      <ClientsSection />
 
 export default HomePage;

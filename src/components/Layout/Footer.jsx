@@ -171,7 +171,7 @@ const Footer = () => {
               >
                 <Mail size={20} className="text-obsidium-300 mr-3 flex-shrink-0" />
                 <a href="mailto:info@webdevcompany.com" className="text-obsidium-100 hover:text-white transition-colors">
-                  info@webdevcompany.com
+                  obsidium.dev@gmail.com
                 </a>
               </motion.li>
             </ul>

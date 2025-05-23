@@ -81,7 +81,7 @@ const Header = ({ isScrolled }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2 ">
               <Logo />
             </Link>
           </motion.div>

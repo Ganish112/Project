@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+
+import SEO from '../components/UI/SEO';
 import { 
   Globe, 
   ShoppingCart, 
@@ -19,6 +22,15 @@ import SectionTitle from '../components/UI/SectionTitle';
 import Button from '../components/UI/Button';
 import AnimatedLogo from '../components/UI/AnimatedLogo'
 
+import p1 from '../assets/p1.png'
+import p3 from '../assets/p3.png'
+import p4 from '../assets/p4.png'
+import p7 from '../assets/p7.png'
+import p6 from '../assets/p6.jpg'
+import p5 from '../assets/p5.jpg'
+import p9 from '../assets/p9.jpg'
+import p8 from '../assets/p8.png'
+import p2 from '../assets/p2.png'
 
 const services = [
   {
@@ -34,7 +46,7 @@ const services = [
       'Cross-browser compatibility',
       'Technical SEO implementation'
     ],
-    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p1
   },
   {
     id: 'ecommerce-solutions',
@@ -49,7 +61,7 @@ const services = [
       'Customer account management',
       'Shipping and tax calculation integration'
     ],
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p3
   },
   {
     id: 'seo-optimization',
@@ -64,7 +76,7 @@ const services = [
       'SEO audit and analysis',
       'Local SEO optimization'
     ],
-    image: 'https://images.pexels.com/photos/306316/pexels-photo-306316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p4
   },
   {
     id: 'website-maintenance',
@@ -79,7 +91,7 @@ const services = [
       'Technical support',
       'Monthly performance reports'
     ],
-    image: 'https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p7
   },
   {
     id: 'web-applications',
@@ -94,7 +106,7 @@ const services = [
       'Real-time features and updates',
       'Scalable architecture'
     ],
-    image: 'https://images.pexels.com/photos/196646/pexels-photo-196646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p6
   },
   {
     id: 'web-hosting',
@@ -109,7 +121,7 @@ const services = [
       'Regular backups and monitoring',
       'Email hosting and setup'
     ],
-    image: 'https://images.pexels.com/photos/1772123/pexels-photo-1772123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p5
   },
   {
     id: 'ui-ux-design',
@@ -124,7 +136,7 @@ const services = [
       'Interaction design',
       'Design system creation'
     ],
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p2
   },
   {
     id: 'api-integrations',
@@ -139,7 +151,7 @@ const services = [
       'Custom API development',
       'Analytics and tracking implementation'
     ],
-    image: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p8
   },
   {
     id: 'branding-design',
@@ -154,16 +166,11 @@ const services = [
       'Brand messaging and positioning',
       'Social media branding'
     ],
-    image: 'https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    image: p9
   },
 ];
 
-function ServicesPage() {
-
-  useEffect(() => {
-    document.title = 'Services | Obsidium';
-  }, []);
-
+const ServicesPage = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
 
   const containerVariants = {
@@ -182,10 +189,13 @@ function ServicesPage() {
   };
 
   return (
-
-  <>
-   {/* Hero Section */}
-   <Section background="dark" spacing="xl">
+    <>
+      <SEO 
+        title="Our Services"
+        description="Comprehensive web development services including custom websites, e-commerce solutions, SEO optimization, and maintenance. Expert solutions for your digital needs."
+      />
+      {/* Hero Section */}
+      <Section background="dark" spacing="xl">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -225,75 +235,68 @@ function ServicesPage() {
           </motion.div>
           
           <motion.div 
-  className="w-full lg:w-1/2 flex justify-center relative lg:translate-x-4 lg:ml-28"
-  initial={{ opacity: 0, scale: 0.8 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8, delay: 0.5 }}
->
-  <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
-  <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
-    <AnimatedLogo className="w-full h-full" />
-    <div className="text-white text-base sm:text-lg md:text-2xl font-mono whitespace-nowrap overflow-hidden border-r-2 border-white w-[27ch] animate-typing">
-      <span className="text-lg sm:text-xl md:text-3xl">Obsidium.</span> Web Development.
-    </div>
-  </div>
-</motion.div>
-
-
-
+            className="w-full lg:w-1/2 flex justify-center relative lg:translate-x-4 lg:ml-28"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
+            <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
+              <AnimatedLogo className="w-full h-full" />
+              <div className="text-white text-base sm:text-lg md:text-2xl font-mono whitespace-nowrap overflow-hidden border-r-2 border-white w-[27ch] animate-typing">
+                <span className="text-lg sm:text-xl md:text-3xl">Obsidium.</span> Web Development.
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
-
       </Section>
       
-      
       <Section background="light" className="min-h-screen relative overflow-hidden">
-  <div className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.1,
-          },
-        },
-      }}
-      className="mb-12 text-center"
-    >
-      <SectionTitle
-        title="Our Services"
-        subtitle="We offer a full range of web development services to make your online presence stand out."
-      />
-    </motion.div>
+        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+            className="mb-12 text-center"
+          >
+            <SectionTitle
+              title="Our Services"
+              subtitle="We offer a full range of web development services to make your online presence stand out."
+            />
+          </motion.div>
 
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.2,
-          },
-        },
-      }}
-      className="space-y-4"
-    >
-      {services.map((service) => (
-        <motion.div key={service.id} variants={fadeIn}>
-          <ServiceAccordion {...service} />
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</Section>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2,
+                },
+              },
+            }}
+            className="space-y-4"
+          >
+            {services.map((service) => (
+              <motion.div key={service.id} variants={fadeIn}>
+                <ServiceAccordion {...service} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </Section>
 
-
-
-    {/* CTA Section */}
+      {/* CTA Section */}
       <Section background="gradient">
         <motion.div
           initial="hidden"
@@ -320,6 +323,6 @@ function ServicesPage() {
       </Section>
     </>
   );
-}
+};
 
 export default ServicesPage;

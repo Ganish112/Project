@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'; 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Clock, Users, BadgeCheck,ArrowRight } from 'lucide-react';
 import Section from '../components/UI/Section';
@@ -6,13 +6,14 @@ import SectionTitle from '../components/UI/SectionTitle';
 import Button from '../components/UI/Button';
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import Image from '../assets/MVV.png'
-
+import SEO from '../components/UI/SEO';
+import DM from '../assets/dimalmaloku.jpg'
 const teamMembers = [
   {
     name: 'Andi Zogaj',
     position: 'Founder & Full Stack Developer',
     photo: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'With over 5 years of experience in web development, Andi is the co-founder of Obsidium, driven by a vision to create innovative digital solutions. Skilled in JavaScript technologies, Andi is passionate about building efficient web applications. solving problems and delivering smooth, user-friendly experiences.',
+    bio: 'Co-founder of Obsidium, driven by a vision to create innovative digital solutions. Skilled in JavaScript technologies, Andi is passionate about building efficient web applications. solving problems and delivering smooth, user-friendly experiences.',
     social: {
       linkedin: 'https://www.linkedin.com/in/andi-zogaj-20a8a2242/',
       github: 'https://github.com/AndiZogaj22'
@@ -21,8 +22,8 @@ const teamMembers = [
   {
     name: 'Dimal Maloku',
     position: 'Founder & Full Stack Developer',
-    photo: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
-    bio: 'With over 5 years of experience in web development, Andi is the co-founder of Obsidium, driven by a vision to create innovative digital solutions. He is skilled in React, Next.js, JavaScript, and Tailwind CSS, building clean and efficient web applications. Andi is passionate about solving problems and delivering smooth, user-friendly experiences.',
+    photo: DM,
+    bio: 'Co-founder of Obsidium with 5+ years in web development, Dimalis specializes in React, Next js, JavaScript, and Tailwind CSS, .NET etc. He focuses on building clean, user-friendly web applications and solving real-world problems through smart digital solutions.',
     social: {
       linkedin: 'https://www.linkedin.com/in/dimal-maloku-188b9a31b/',
       github: 'https://github.com/DimalMaloku1'
@@ -32,10 +33,6 @@ const teamMembers = [
 ];
 
 const AboutPage = () => {
-  useEffect(() => {
-    document.title = 'About Us | Obsidium';
-  }, []);
-
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -43,6 +40,10 @@ const AboutPage = () => {
 
   return (
     <>
+      <SEO 
+        title="About Us"
+        description="Meet the team behind Obsidium. Learn about our mission, values, and commitment to delivering exceptional web development solutions."
+      />
       <Section background="dark" spacing="xl">
         <motion.div 
           initial="hidden"
@@ -131,7 +132,6 @@ const AboutPage = () => {
     }}
     className="flex flex-col gap-12 items-center"
   >
-    {/* Image on top, centered */}
     <div className="flex justify-center items-start pt-0 w-full max-w-md">
       <motion.div variants={fadeIn} className="flex flex-col items-center text-center w-full">
         <img
@@ -144,9 +144,7 @@ const AboutPage = () => {
       </motion.div>
     </div>
 
-    {/* Text content below image */}
     <motion.div variants={fadeIn} className="space-y-8 max-w-4xl px-4">
-      {/* Mission */}
       <section>
         <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR MISSION</h5>
         <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
@@ -160,7 +158,6 @@ const AboutPage = () => {
         </p>
       </section>
 
-      {/* Vision */}
       <section>
         <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR VISION</h5>
         <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
@@ -174,7 +171,6 @@ const AboutPage = () => {
         </p>
       </section>
 
-      {/* Values */}
       <section>
         <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR VALUES</h5>
         <ul className="space-y-4">
@@ -207,7 +203,6 @@ const AboutPage = () => {
     </motion.div>
   </motion.div>
 </Section>
-
 
       <Section background="white">
         <motion.div
@@ -261,10 +256,6 @@ const AboutPage = () => {
     </motion.div>
   ))}
 </div>
-
-
-
-          
         </motion.div>
       </Section>
 

@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import Section from '../components/UI/Section';
 import Button from '../components/UI/Button';
+import SEO from '../components/UI/SEO';
 
 const ContactPage = () => {
   useEffect(() => {
@@ -74,7 +75,7 @@ const ContactPage = () => {
     {
       icon: <MapPin size={24} className="text-obsidium-500" />,
       title: 'Our Location',
-      content: 'Prishtina, Republic Of Kosovo, 10000',
+      content: 'Prishtina, 10000 Kosovo',
       bg: 'bg-obsidium-50 dark:bg-obsidium-900/30'
     },
     {
@@ -90,7 +91,7 @@ const ContactPage = () => {
     {
       icon: <Mail size={24} className="text-obsidium-500" />,
       title: 'Email Address',
-      content: 'info@webdevcompany.com',
+      content: 'obsidium.dev@gmail.com',
       link: 'mailto:info@webdevcompany.com',
       bg: 'bg-obsidium-50 dark:bg-obsidium-900/30'
     },
@@ -112,6 +113,10 @@ const ContactPage = () => {
 
   return (
     <>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Obsidium's web development team. Let's discuss your project and create something amazing together."
+      />
       <Section background="dark" spacing="xl">
         <motion.div
           initial="hidden"
@@ -150,11 +155,11 @@ const ContactPage = () => {
             }
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 ">
             {contactInfo.map((info, index) => (
               <motion.div key={index} variants={fadeIn} whileHover={{ y: -5 }} className="relative">
                 <Tilt options={{ max: 15, scale: 1, speed: 450 }}>
-                  <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 h-full backdrop-blur-lg bg-opacity-80">
+                  <div className="bg-white  dark:bg-gray-900 rounded-lg p-6  shadow-lg hover:shadow-xl transition-all duration-300 h-full backdrop-blur-lg bg-opacity-80">
                     <div className={`${info.bg} p-3 rounded-lg inline-block mb-4`}>
                       {info.icon}
                     </div>
