@@ -36,7 +36,7 @@ const Header = ({ isScrolled }) => {
     if (savedTheme === 'dark' || savedTheme === 'light') {
       setTheme(savedTheme);
     } else {
-      setTheme('light'); // default
+      setTheme('dark'); // default
     }
   }, []);
 

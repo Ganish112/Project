@@ -109,11 +109,11 @@ const HeroSection = () => {
               variants={textContainer}
             >
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-2">
-                {titleWords.map((word, i) => (
+                {titleWords.map((word, index) => (
                   <motion.span
-                    key={i}
+                    key={index}
+                    className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${word.className}`}
                     variants={letterAnimation}
-                    className={`${word.className} text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold`}
                   >
                     {word.text}
                   </motion.span>
@@ -156,11 +156,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
             <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
               <AnimatedLogo className="w-full h-full" />
-              <div class="text-white text-base sm:text-lg md:text-2xl font-mono whitespace-nowrap overflow-hidden border-r-2 border-white w-[27ch] animate-typing">
-  <span class="text-lg sm:text-xl md:text-3xl">Obsidium.</span> Web Development.
-</div>
-
-
+              
             </div>
           </motion.div>
         </div>

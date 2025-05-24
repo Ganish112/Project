@@ -8,6 +8,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import Image from '../assets/MVV.png'
 import SEO from '../components/UI/SEO';
 import DM from '../assets/dimalmaloku.jpg'
+
 const teamMembers = [
   {
     name: 'Andi Zogaj',
@@ -29,7 +30,6 @@ const teamMembers = [
       github: 'https://github.com/DimalMaloku1'
     }
   },
-  
 ];
 
 const AboutPage = () => {
@@ -117,92 +117,91 @@ const AboutPage = () => {
       </Section>
 
       <Section background="light">
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={{
-      hidden: { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: {
-          staggerChildren: 0.2
-        }
-      }
-    }}
-    className="flex flex-col gap-12 items-center"
-  >
-    <div className="flex justify-center items-start pt-0 w-full max-w-md">
-      <motion.div variants={fadeIn} className="flex flex-col items-center text-center w-full">
-        <img
-          src={Image}
-          alt="Mission"
-          className="bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-500 w-full"
-          style={{ marginTop: 0 }}
-        
-        />
-      </motion.div>
-    </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+          className="flex flex-col gap-12 items-center"
+        >
+          <div className="flex justify-center items-start pt-0 w-full max-w-md">
+            <motion.div variants={fadeIn} className="flex flex-col items-center text-center w-full">
+              <img
+                src={Image}
+                alt="Mission"
+                className="bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-500 w-full"
+                style={{ marginTop: 0 }}
+              />
+            </motion.div>
+          </div>
 
-    <motion.div variants={fadeIn} className="space-y-8 max-w-4xl px-4">
-      <section>
-        <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR MISSION</h5>
-        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
-          We're on a Mission to Transform Digital Experiences
-        </h2>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-          At Obsidium, our mission is to empower businesses with innovative web solutions that drive growth and create meaningful connections with their audiences.
-        </p>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
-          We believe that technology should work for people, not the other way around. That's why we focus on creating intuitive, user-friendly websites that solve real problems and deliver measurable results.
-        </p>
-      </section>
+          <motion.div variants={fadeIn} className="space-y-8 max-w-4xl px-4">
+            <section>
+              <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR MISSION</h5>
+              <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
+                We're on a Mission to Transform Digital Experiences
+              </h2>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                At Obsidium, our mission is to empower businesses with innovative web solutions that drive growth and create meaningful connections with their audiences.
+              </p>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
+                We believe that technology should work for people, not the other way around. That's why we focus on creating intuitive, user-friendly websites that solve real problems and deliver measurable results.
+              </p>
+            </section>
 
-      <section>
-        <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR VISION</h5>
-        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
-          Leading the Future of Digital Innovation
-        </h2>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-          We envision a world where every business can harness the power of technology effortlessly to connect with their customers and inspire growth.
-        </p>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
-          Our goal is to be the trusted partner for companies seeking to evolve and thrive in an ever-changing digital landscape.
-        </p>
-      </section>
+            <section>
+              <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR VISION</h5>
+              <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
+                Leading the Future of Digital Innovation
+              </h2>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                We envision a world where every business can harness the power of technology effortlessly to connect with their customers and inspire growth.
+              </p>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
+                Our goal is to be the trusted partner for companies seeking to evolve and thrive in an ever-changing digital landscape.
+              </p>
+            </section>
 
-      <section>
-        <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR VALUES</h5>
-        <ul className="space-y-4">
-          <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
-            <span className="text-gray-700 dark:text-gray-300 text-base">
-              <strong>Excellence:</strong> We strive for excellence in everything we do, from code quality to client communication.
-            </span>
-          </li>
-          <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
-            <span className="text-gray-700 dark:text-gray-300 text-base">
-              <strong>Innovation:</strong> We embrace new technologies and approaches to deliver cutting-edge solutions.
-            </span>
-          </li>
-          <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
-            <span className="text-gray-700 dark:text-gray-300 text-base">
-              <strong>Integrity:</strong> We operate with honesty, transparency, and a commitment to doing what's right.
-            </span>
-          </li>
-          <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-            <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
-            <span className="text-gray-700 dark:text-gray-300 text-base">
-              <strong>Collaboration:</strong> We believe in the power of teamwork, both within our company and with our clients.
-            </span>
-          </li>
-        </ul>
-      </section>
-    </motion.div>
-  </motion.div>
-</Section>
+            <section>
+              <h5 className="text-obsidium-500 font-semibold mb-2 tracking-wide text-sm">OUR VALUES</h5>
+              <ul className="space-y-4">
+                <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-base">
+                    <strong>Excellence:</strong> We strive for excellence in everything we do, from code quality to client communication.
+                  </span>
+                </li>
+                <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-base">
+                    <strong>Innovation:</strong> We embrace new technologies and approaches to deliver cutting-edge solutions.
+                  </span>
+                </li>
+                <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-base">
+                    <strong>Integrity:</strong> We operate with honesty, transparency, and a commitment to doing what's right.
+                  </span>
+                </li>
+                <li className="flex items-start p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <span className="text-obsidium-500 mr-3 flex-shrink-0">✓</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-base">
+                    <strong>Collaboration:</strong> We believe in the power of teamwork, both within our company and with our clients.
+                  </span>
+                </li>
+              </ul>
+            </section>
+          </motion.div>
+        </motion.div>
+      </Section>
 
       <Section background="white">
         <motion.div
@@ -219,43 +218,43 @@ const AboutPage = () => {
             }
           }}
         >
-        <SectionTitle title="Meet Our Team" subtitle="The Talented Individuals Behind Obsidium" />
+          <SectionTitle title="Meet Our Team" subtitle="The Talented Individuals Behind Obsidium" />
 
-<div className="flex justify-between gap-8">
-  {teamMembers.map((member, index) => (
-    <motion.div
-      key={index}
-      variants={fadeIn}
-      className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-    >
-      <div className="relative mb-6">
-        <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/20 to-transparent blur-xl"></div>
-        <img 
-          src={member.photo}
-          alt={member.name}
-          className="rounded-full w-32 h-32 object-cover mx-auto relative z-10"
-        />
-      </div>
-      <h4 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{member.name}</h4>
-      <p className="text-obsidium-500 font-medium mb-4">{member.position}</p>
-      <p className="text-gray-700 dark:text-gray-300 mb-6">{member.bio}</p>
-      <div className="flex justify-center gap-4">
-        {Object.entries(member.social).map(([platform, link]) => (
-          <a
-            key={platform}
-            href={link}
-            className="text-obsidium-500 hover:text-obsidium-600 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {platform === "linkedin" && <FaLinkedin  size={30}/>}
-            {platform === "github" && <FaGithub size={30}/>}
-          </a>
-        ))}
-      </div>
-    </motion.div>
-  ))}
-</div>
+          <div className="flex flex-col lg:flex-row gap-8">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn}
+                className="flex-1 bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/20 to-transparent blur-xl"></div>
+                  <img 
+                    src={member.photo}
+                    alt={member.name}
+                    className="rounded-full w-32 h-32 object-cover mx-auto relative z-10"
+                  />
+                </div>
+                <h4 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white text-center">{member.name}</h4>
+                <p className="text-obsidium-500 font-medium mb-4 text-center">{member.position}</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 text-center">{member.bio}</p>
+                <div className="flex justify-center gap-4">
+                  {Object.entries(member.social).map(([platform, link]) => (
+                    <a
+                      key={platform}
+                      href={link}
+                      className="text-obsidium-500 hover:text-obsidium-600 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {platform === "linkedin" && <FaLinkedin size={30}/>}
+                      {platform === "github" && <FaGithub size={30}/>}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </Section>
 
