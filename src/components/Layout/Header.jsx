@@ -7,7 +7,7 @@ import { GoSun, GoMoon } from "react-icons/go";
 
 const Header = ({ isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
