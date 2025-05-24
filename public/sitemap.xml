@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://obsidium.dev/</loc> <!--The actual domain path -->
-    <lastmod>2025-05-20</lastmod> <!-- Updated to the current deployment date -->
+    <loc>https://obsidium-dev.com/</loc>
+    <lastmod>2025-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://obsidium.dev/about</loc> <!--The actual domain path -->
-    <lastmod>2025-05-20</lastmod> <!-- Updated to the current deployment date -->
+    <loc>https://obsidium-dev.com/about</loc>
+    <lastmod>2025-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://obsidium.dev/services</loc> <!--The actual domain path -->
-    <lastmod>2025-05-20</lastmod> <!-- Updated to the current deployment date -->
+    <loc>https://obsidium-dev.com/services</loc>
+    <lastmod>2025-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://obsidium.dev/contact</loc> <!--The actual domain path -->
-    <lastmod>2025-05-20</lastmod> <!-- Updated to the current deployment date -->
+    <loc>https://obsidium-dev.com/contact</loc>
+    <lastmod>2025-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

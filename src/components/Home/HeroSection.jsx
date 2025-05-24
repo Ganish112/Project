@@ -9,63 +9,40 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
       if (heroRef.current) {
-        heroRef.current.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        const scrollPosition = window.scrollY;
+        const translateY = Math.min(scrollPosition * 0.3, 200); // Limit the parallax effect
+        heroRef.current.style.transform = `translateY(${translateY}px)`;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const fadeIn = {
+  const fadeIn = useMemo(() => ({
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
-  };
+  }), []);
 
-  const textContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const letterAnimation = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 200
-      }
-    }
-  };
-
-  const titleWords = [
+  const titleWords = useMemo(() => [
     { text: "Crafting", className: "text-white" },
     { text: "Digital", className: "text-obsidium-300" },
     { text: "Experiences", className: "text-obsidium-300" },
     { text: "That", className: "text-white" },
     { text: "Define", className: "text-white" },
     { text: "Success", className: "text-obsidium-300" }
-  ];
+  ], []);
 
   // Generate random positions once when the component mounts
   const backgroundElements = useMemo(() => {
-    return [...Array(5)].map(() => ({
-      width: Math.random() * 300 + 100,
-      height: Math.random() * 300 + 100,
+    return [...Array(3)].map(() => ({
+      width: Math.random() * 200 + 100,
+      height: Math.random() * 200 + 100,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 5}s`,
-      animationDuration: `${Math.random() * 5 + 5}s`
+      animationDelay: `${Math.random() * 3}s`,
+      animationDuration: `${Math.random() * 3 + 5}s`
     }));
   }, []);
 
@@ -74,8 +51,8 @@ const HeroSection = () => {
       ref={heroRef}
       className="relative min-h-screen bg-gradient-to-br from-obsidium-900 via-obsidium-800 to-obsidium-600 flex items-center overflow-hidden"
     >
-      {/* Static background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Optimized background elements - reduced count */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {backgroundElements.map((element, i) => (
           <div
             key={i}
@@ -86,13 +63,14 @@ const HeroSection = () => {
               left: element.left,
               top: element.top,
               animationDelay: element.animationDelay,
-              animationDuration: element.animationDuration
+              animationDuration: element.animationDuration,
+              willChange: 'transform'
             }}
           />
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/20 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/20 to-transparent pointer-events-none"></div>
       
       <div className="container mx-auto px-4 relative z-10 py-20 lg:py-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -100,20 +78,41 @@ const HeroSection = () => {
             className="max-w-2xl text-center lg:text-left"
             initial="hidden"
             animate="visible"
-            variants={textContainer}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                  staggerChildren: 0.1
+                }
+              }
+            }}
           >
-          
-            
             <motion.div 
               className="mb-8"
-              variants={textContainer}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1 }
+              }}
             >
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-2">
                 {titleWords.map((word, index) => (
                   <motion.span
                     key={index}
                     className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${word.className}`}
-                    variants={letterAnimation}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { 
+                        opacity: 1, 
+                        y: 0,
+                        transition: {
+                          type: "spring",
+                          damping: 12,
+                          stiffness: 100
+                        }
+                      }
+                    }}
                   >
                     {word.text}
                   </motion.span>
@@ -143,20 +142,18 @@ const HeroSection = () => {
                 Let's work together
                 </span>
               </Button>
-             
             </motion.div>
           </motion.div>
           
           <motion.div 
-            className="w-full lg:w-1/2 flex justify-center relative"
+            className="w-full lg:w-1/2 flex justify-center relative lg:translate-x-4 lg:ml-28"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5 }}
           >
             <div className="absolute inset-0 bg-gradient-radial from-obsidium-500/30 to-transparent blur-3xl"></div>
             <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px]">
               <AnimatedLogo className="w-full h-full" />
-              
             </div>
           </motion.div>
         </div>
@@ -166,7 +163,7 @@ const HeroSection = () => {
         className="absolute bottom-8 left-0 right-0 flex justify-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1 }}
       >
         <a 
           href="#services" 
@@ -182,4 +179,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection);

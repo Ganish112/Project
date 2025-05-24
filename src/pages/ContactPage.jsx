@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Tilt } from 'react-tilt';
 import {
   MapPin, Phone, Clock, Mail,
-  Facebook, Instagram, Linkedin, Github,
+  Facebook, Instagram, Linkedin,
   Send, User, MessageSquare, Building
 } from 'lucide-react';
 import Section from '../components/UI/Section';
@@ -11,10 +11,6 @@ import Button from '../components/UI/Button';
 import SEO from '../components/UI/SEO';
 
 const ContactPage = () => {
-  useEffect(() => {
-    document.title = 'Contact Us | Obsidium';
-  }, []);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -66,16 +62,16 @@ const ContactPage = () => {
     }
   };
 
-  const fadeIn = {
+  const fadeIn = useMemo(() => ({
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
-  };
+  }), []);
 
-  const contactInfo = [
+  const contactInfo = useMemo(() => [
     {
       icon: <MapPin size={24} className="text-obsidium-500" />,
       title: 'Our Location',
-      content: 'Prishtina, 10000 Kosovo',
+      content: 'Prishtina 10000, Kosovo',
       bg: 'bg-obsidium-50 dark:bg-obsidium-900/30'
     },
     {
@@ -85,7 +81,6 @@ const ContactPage = () => {
         { number: '(+383) 45 354 732'},
         { number: '(+383) 45 439 223'}
       ],
-      link: 'tel:+14155550123',
       bg: 'bg-obsidium-50 dark:bg-obsidium-900/30'
     },
     {
@@ -101,13 +96,13 @@ const ContactPage = () => {
       content: 'Mon - Sun: 9:00 AM - 7:00 PM',
       bg: 'bg-obsidium-50 dark:bg-obsidium-900/30'
     }
-  ];
+  ], []);
 
-  const socialLinks = [
+  const socialLinks = useMemo(() => [
     { icon: <Instagram size={24} />, href: 'https://Instagram.com', color: 'text-blue-500' },
     { icon: <Facebook size={24} />, href: 'https://Facebook.com', color: 'text-blue-600' },
     { icon: <Linkedin size={24} />, href: 'https://LinkedIn.com', color: 'text-blue-700' },
-  ];
+  ], []);
 
   const inputClasses = "w-full px-4 py-3 rounded-lg border bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-obsidium-500 transition-all duration-300 border-gray-200 dark:border-gray-700 placeholder-gray-400 dark:placeholder-gray-500";
 
@@ -125,7 +120,10 @@ const ContactPage = () => {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: { staggerChildren: 0.2 }
+              transition: { 
+                duration: 0.5,
+                staggerChildren: 0.1 
+              }
             }
           }}
           className="text-center max-w-3xl mx-auto"
@@ -151,40 +149,47 @@ const ContactPage = () => {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: { staggerChildren: 0.2 }
+              transition: { 
+                duration: 0.5,
+                staggerChildren: 0.1 
+              }
             }
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {contactInfo.map((info, index) => (
-              <motion.div key={index} variants={fadeIn} whileHover={{ y: -5 }} className="relative">
+              <motion.div
+                key={index}
+                variants={fadeIn}
+                whileHover={{ y: -5 }}
+                className="relative"
+              >
                 <Tilt options={{ max: 15, scale: 1, speed: 450 }}>
-                  <div className="bg-white  dark:bg-gray-900 rounded-lg p-6  shadow-lg hover:shadow-xl transition-all duration-300 h-full backdrop-blur-lg bg-opacity-80">
+                  <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 h-full backdrop-blur-lg bg-opacity-80">
                     <div className={`${info.bg} p-3 rounded-lg inline-block mb-4`}>
                       {info.icon}
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{info.title}</h3>
                     {Array.isArray(info.content) ? (
-  info.content.map((phone, i) => (
-    <a
-      key={i}
-      href={phone.link}
-      className="block text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
-    >
-      {phone.number}
-    </a>
-  ))
-) : info.link ? (
-  <a
-    href={info.link}
-    className="text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
-  >
-    {info.content}
-  </a>
-) : (
-  <p className="text-gray-600 dark:text-gray-400">{info.content}</p>
-)}
-
+                      info.content.map((phone, i) => (
+                        <a
+                          key={i}
+                          href={phone.link}
+                          className="block text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
+                        >
+                          {phone.number}
+                        </a>
+                      ))
+                    ) : info.link ? (
+                      <a
+                        href={info.link}
+                        className="text-gray-600 dark:text-gray-400 hover:text-obsidium-500 dark:hover:text-obsidium-400 transition-colors"
+                      >
+                        {info.content}
+                      </a>
+                    ) : (
+                      <p className="text-gray-600 dark:text-gray-400">{info.content}</p>
+                    )}
                   </div>
                 </Tilt>
               </motion.div>
@@ -202,26 +207,30 @@ const ContactPage = () => {
                   </div>
                 </div>
 
-                {formSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-6 p-6 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-300 rounded-lg"
-                  >
-                    <h4 className="font-semibold text-lg mb-2">Thank you for your message!</h4>
-                    <p>We'll get back to you within 24–48 business hours.</p>
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {formSubmitted && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-6 p-6 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-300 rounded-lg"
+                    >
+                      <h4 className="font-semibold text-lg mb-2">Thank you for your message!</h4>
+                      <p>We'll get back to you within 24–48 business hours.</p>
+                    </motion.div>
+                  )}
 
-                {formError && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-6 p-6 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-300 rounded-lg"
-                  >
-                    <p>{formError}</p>
-                  </motion.div>
-                )}
+                  {formError && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-6 p-6 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-300 rounded-lg"
+                    >
+                      <p>{formError}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -267,7 +276,7 @@ const ContactPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Phone Numbers
+                        Phone Number
                       </label>
                       <div className="relative">
                         <Phone size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -354,7 +363,6 @@ const ContactPage = () => {
                     </motion.a>
                   ))}
                 </div>
-
               </div>
             </motion.div>
           </div>
@@ -364,4 +372,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default React.memo(ContactPage);

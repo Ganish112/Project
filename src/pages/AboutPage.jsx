@@ -13,7 +13,7 @@ const teamMembers = [
   {
     name: 'Andi Zogaj',
     position: 'Founder & Full Stack Developer',
-    photo: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600',
+    photo: '',
     bio: 'Co-founder of Obsidium, driven by a vision to create innovative digital solutions. Skilled in JavaScript technologies, Andi is passionate about building efficient web applications. solving problems and delivering smooth, user-friendly experiences.',
     social: {
       linkedin: 'https://www.linkedin.com/in/andi-zogaj-20a8a2242/',
