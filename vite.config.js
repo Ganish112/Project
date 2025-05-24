@@ -4,9 +4,19 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    historyApiFallback: true,
+    port: 5173,
+    strictPort: true,
+    host: true,
+    historyApiFallback: {
+      disableDotRule: true
+    }
   },
   preview: {
-    historyApiFallback: true,
+    port: 5173,
+    strictPort: true,
+    host: true,
+    historyApiFallback: {
+      disableDotRule: true
+    }
   }
 })
